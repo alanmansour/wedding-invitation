@@ -11,7 +11,33 @@ My fiancée loved the idea from the beginning — especially the playful heart-g
 
 I decided to make this project open source as well, in case it inspires other couples or helps someone else create a digital invitation for their own special day. 🌍💖
 
+Another feature that was very important to me was personalization. The invitation can be customized for a specific guest simply by using their name in the URL, which makes the experience feel even more personal and welcoming. 💌
+
+For example:
+
+`website.com/name`
+
+Since many of our guests speak Arabic, I also added an Arabic version of the invitation. 🌙
+
+For example:
+
+`website.com/ar/اسم`
+
 The original design was made on Figma. 🎨
+
+## Screenshots
+
+Here are a few glimpses of the invitation experience:
+
+![Screenshot 0](./imgs/scr0.png)
+
+![Screenshot 1](./imgs/scr1.png)
+
+![Screenshot 2](./imgs/scr2.png)
+
+![Screenshot 3](./imgs/scr3.png)
+
+![Screenshot 4](./imgs/scr4.png)
 
 ## Running the code
 
