@@ -15,13 +15,13 @@ interface InvitationCardStrings {
   city: string;
   flipButton: string;
   backButton: string;
-  celebrationTitle: string;
-  weddingPartyLabel: string;
-  programSoon: string;
+  storyTitle: string;
+  story: string;
   fonts: {
     title: string;
     secondary: string;
     address: string;
+    story: string;
   };
 }
 
@@ -76,7 +76,9 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
       >
         {/* Front of card */}
         <div
-          className="absolute inset-0 backface-hidden rounded-2xl shadow-2xl overflow-hidden cursor-pointer"
+          className={`absolute inset-0 backface-hidden rounded-2xl shadow-2xl overflow-hidden ${
+            isFlipped ? 'pointer-events-none' : 'pointer-events-auto'
+          }`}
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(${bgImage})`,
             backgroundSize: 'cover',
@@ -95,12 +97,7 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
               </div>
             )}
 
-            <div className={`text-center space-y-8 ${guestName ? 'mt-32' : 'mt-12'}`}>
-              <div className={`${strings.fonts.title} text-5xl lg:text-8xl mb-4 drop-shadow-lg transition-opacity duration-1000 ease-out ${
-                coupleNamesVisible ? 'opacity-100' : 'opacity-0'
-              }`}>
-                {strings.coupleNames}
-              </div>
+            <div className={`text-center space-y-8 ${guestName ? 'mt-14' : 'mt-12'}`}>
 
               <div className="w-32 h-px bg-gradient-to-r from-transparent via-[#f59dbd] to-transparent mx-auto" />
 
@@ -113,7 +110,13 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
                 </div>
               </div>
 
-              <div className="space-y-4 mt-8">
+              <div className={`${strings.fonts.title} text-5xl lg:text-8xl mb-4 drop-shadow-lg transition-opacity duration-1000 ease-out ${
+                coupleNamesVisible ? 'opacity-100' : 'opacity-0'
+              }`}>
+                {strings.coupleNames}
+              </div>
+
+              <div className="space-y-4 mt-8s">
                 <div className={`${strings.fonts.secondary} text-3xl lg:text-5xl text-white`}>
                   {strings.dateText}
                 </div>
@@ -148,7 +151,9 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
 
         {/* Back of card */}
         <div
-          className="absolute inset-0 backface-hidden rounded-2xl shadow-2xl overflow-hidden cursor-pointer rotate-y-180"
+          className={`absolute inset-0 backface-hidden rounded-2xl shadow-2xl overflow-hidden rotate-y-180 ${
+            isFlipped ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url(${couplePhoto})`,
             backgroundSize: 'cover',
@@ -156,28 +161,22 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
           }}
         >
           <div className="relative h-full flex flex-col items-center justify-center p-12 text-white">
-            <div className="text-center space-y-6 max-w-md bg-black/40 backdrop-blur-md rounded-2xl p-8 border-2 border-[#f59dbd]/30">
+            <div className="text-center space-y-6 max-w-lg bg-black/40 backdrop-blur-md rounded-2xl p-8 border-2 border-[#f59dbd]/30">
               <div className={`${strings.fonts.title} text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#f59dbd] mb-6`}>
-                {strings.celebrationTitle}
+                {strings.storyTitle}
               </div>
 
               <div className="space-y-6">
                 <div>
-                  <div className={`${strings.fonts.secondary} text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white mb-4`}>
-                    {strings.weddingPartyLabel}
-                  </div>
-                  <div className={`${strings.fonts.secondary} text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#f59dbd]`}>
-                    {strings.timeText}
+                    <div className={`${strings.fonts.story} text-xl sm:text-xl md:text-xl lg:text-2xl text-white mb-4 max-h-96 overflow-y-scroll pr-2 whitespace-pre-line ${
+                      isFlipped ? 'pointer-events-auto' : 'pointer-events-none'
+                    }`}>
+                    {strings.story}
                   </div>
                 </div>
 
                 <div className="w-full h-px bg-gradient-to-r from-transparent via-[#f59dbd] to-transparent" />
 
-                <div>
-                  <div className={`${strings.fonts.secondary} text-lg sm:text-xl md:text-2xl text-[#f59dbd]`}>
-                    {strings.programSoon}
-                  </div>
-                </div>
               </div>
             </div>
 

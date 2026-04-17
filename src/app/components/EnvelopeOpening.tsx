@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, type MouseEvent } from 'react';
 
 interface EnvelopeOpeningStrings {
   fallbackGuest: string;
-  dearLabel: string;
   invitedText: string;
   fonts: {
     title: string;
@@ -185,7 +184,7 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
 
     completeTimer.current = window.setTimeout(() => {
       onComplete();
-    }, 5000);
+    }, 4000);
   };
 
   return (

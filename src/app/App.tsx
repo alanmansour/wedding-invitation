@@ -60,7 +60,6 @@ interface LanguageStrings {
   };
   envelope: {
     fallbackGuest: string;
-    dearLabel: string;
     invitedText: string;
     fonts: {
       title: string;
@@ -80,13 +79,13 @@ interface LanguageStrings {
     city: string;
     flipButton: string;
     backButton: string;
-    celebrationTitle: string;
-    weddingPartyLabel: string;
-    programSoon: string;
+    storyTitle: string;
+    story: string;
     fonts: {
       title: string;
       secondary: string;
       address: string;
+      story: string;
     };
   };
   countdown: {
@@ -173,7 +172,6 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     },
     envelope: {
       fallbackGuest: 'Dear Guest',
-      dearLabel: 'Dear',
       invitedText: "You're Invited",
       fonts: {
         title: "font-['Pinyon_Script']",
@@ -193,13 +191,13 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       city: 'Copenhagen',
       flipButton: 'Flip ✨',
       backButton: 'Back to Invitation',
-      celebrationTitle: 'The Celebration',
-      weddingPartyLabel: 'The wedding party starts from',
-      programSoon: 'The program will come soon',
+      storyTitle: 'Our Story',
+      story: 'Our story began in 2015 — eleven years ago — a span of time one could easily call a long, winding history. It all started in a quiet little town that embraced our very first steps together. We were classmates studying a new language, strangers to the place, newcomers to the culture, trying to make sense of the world around us. We didn\'t know then that those simple moments — a glance, a word, a shared laugh — were quietly building something far greater than we imagined.\n\nAs the days passed, the feeling of being foreign was no longer just an emotion within us, but a small test of our strength together. We faced successes at times, and losses at others. We lived through moments filled with joy and warmth, and others that were difficult and tinged with heaviness. Yet every time, we found our way back, because one of us was always holding the other\'s hand. Little by little, our friendship deepened into something more — a bond shaped by experience, strengthened by patience, until it became a companionship that cannot be broken.\n\nWe moved from one stage of life to the next, from one city to another, growing, maturing, and dreaming with hearts full of ambition. Until we reached university, where the outlines of our future began to take shape — between lectures, projects, and long nights of work. The road was not easy, but we walked it steadily, supporting each other when the weight grew heavy, and celebrating together whenever a new milestone was reached. Eventually, we became engineers — not only in our careers, but in our shared life as well — building it stone by stone, and guarding it together.\n\nAnd today, we stand at the threshold of a new chapter — one that begins with a young man and a young woman who chose to continue the journey hand in hand, and to share their story with those they love…\n\nA chapter we believe still holds its most beautiful pages unwritten 🤵🏻👰🏻‍♀️',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
         address: "font-['Noto_Sans']",
+        story: "font-['Allura']",
       },
     },
     countdown: {
@@ -282,7 +280,6 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     },
     envelope: {
       fallbackGuest: 'Kære gæst',
-      dearLabel: 'Kære',
       invitedText: 'Du er inviteret',
       fonts: {
         title: "font-['Pinyon_Script']",
@@ -302,13 +299,13 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       city: 'København',
       flipButton: 'Vend ✨',
       backButton: 'Tilbage til invitationen',
-      celebrationTitle: 'Fejringen',
-      weddingPartyLabel: 'Bryllupsfesten starter fra',
-      programSoon: 'Programmet følger snart',
+      storyTitle: 'Vores historie',
+      story: 'Engang for længe siden...',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
         address: "font-['Noto_Sans']",
+        story: "font-['Allura']",
       },
     },
     countdown: {
@@ -390,8 +387,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       address: "font-['Noto_Sans']",
     },
     envelope: {
-      fallbackGuest: 'الضيف العزيز',
-      dearLabel: 'إلى العزيز',
+      fallbackGuest: 'ضيفنا العزيز',
       invitedText: 'دعوة خاصة لكم',
       fonts: {
         title: "font-['Aref_Ruqaa']",
@@ -399,11 +395,11 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       },
     },
     invitationCard: {
-      dearLabel: 'إلى العزيز',
+      dearLabel: 'إلى',
       dearGuest: 'الضيف العزيز',
       coupleNames: 'Alan & Milav',
       requestHonor: 'يشرفنا حضوركم ومشاركتم فرحة ',
-      celebrationLine: 'حفل زفافنا في هذا اليوم المميز ',
+      celebrationLine: 'حفل زفافنا',
       dateText: 'الجمعة 17 يوليو 2026',
       timeText: '17:00',
       addressLine: 'Frederikssundsvej 264',
@@ -411,13 +407,13 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       city: 'كوبنهاغن',
       flipButton: 'اقلب البطاقة ✨',
       backButton: 'العودة إلى الدعوة',
-      celebrationTitle: 'الاحتفال',
-      weddingPartyLabel: 'يبدأ حفل الزفاف من',
-      programSoon: 'سيأتي البرنامج قريبًا',
+      storyTitle: 'قصتنا',
+      story: 'بدأت حكايتنا في عام ٢٠١٥، منذ أحد عشر عامًا، وهي مدة يمكن للمرء أن يقول إن تاريخًا طويلًا قد مضى فيها، في بلدةٍ هادئة احتضنت أولى خطواتنا. كنّا زميلين في دراسة لغة جديدة، غريبين عن المكان، جديدين على الثقافة، نحاول أن نفهم العالم من حولنا. لم نكن نعرف حينها أن تلك اللحظات البسيطة — نظرة، كلمة، ضحكة — كانت تبني شيئًا أكبر مما كنا نتخيّل.\n\nومع مرور الأيام، لم تعد الغربة مجرد شعورٍ في داخلنا، بل امتحانًا صغيرًا لقوّتنا معًا. واجهنا نجاحاتٍ تارة، وخساراتٍ تارة أخرى. مررنا بلحظاتٍ سعيدة ومليئة بالدفء، ولحظاتٍ أخرى صعبة لا تخلو من الكآبة، لكننا — في كل مرة — كنا نجد الطريق من جديد لأن أحدنا كان يمسك بيد الآخر. شيئًا فشيئًا، تحوّلت صداقتنا إلى علاقةٍ أعمق، علاقةٍ صقلتها التجارب، وثبّتها الصبر، حتى أصبحت رفقة دربٍ لا يمكن كسرها.\n\nانتقلنا من مرحلة إلى أخرى، ومن مدينة إلى أخرى، نكبر وننضج ونحلم مفعمين بالطموح. إلى أن وصلنا إلى مرحلة الجامعة، حيث بدأت ملامح مستقبلنا تتشكّل بين المحاضرات والمشاريع والليالي الطويلة. لم يكن الطريق سهلًا، لكننا مضينا فيه بثبات، نساند بعضنا حين يثقل الحمل، ونحتفل معًا حين تتحقق خطوة جديدة. ومع الوقت، أصبحنا مهندسين — ليس فقط في العمل، بل في حياتنا المشتركة أيضًا — نبنيها حجرةً حجرة، ونحرسها معًا.\n\nواليوم، نقف على عتبة فصلٍ جديد، فصلٍ يبدأ بشابٍ وشابة اختارا أن يكملا الطريق يدًا بيد، وأن يشاركا قصتهما مع من يحبّونهما…\n\nفصلٌ نؤمن أن أجمل ما فيه لم يُكتب بعد 🤵🏻👰🏻‍♀️',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Aref_Ruqaa']",
         address: "font-['Noto_Sans']",
+        story: "font-['Pinyon_Script']",
       },
     },
     countdown: {
@@ -472,10 +468,10 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       gifts: {
         title: 'الهدايا',
         intro: 'حضوركم في زفافنا هو أعظم هدية!',
-        details: 'إذا أردتم أيضاً تكريمنا بهدية، فلدينا صندوق MobilePay لشهر العسل.',
+        details: 'إذا أردتم تكريمنا بهدية، فلدينا صندوق MobilePay لشهر العسل.',
         boxTitle: 'MobilePay Honeymoon Box',
         boxButton: 'افتح الصندوق',
-        instructions: 'أو،سيكون لدينا خلال الاحتفال صندوق لوضع الهدايا. إذا كانت الهدية مبلغ من المال، يرجى وضعه في ظرف وإدخاله في الصندوق. إذا كانت الهدية مادية، يرجى وضعها بجانب الصندوق.',
+        instructions: 'أو،سيكون لدينا خلال الاحتفال صندوق لوضع الهدايا. إذا كانت الهدية مبلغ من المال، يرجى وضعه في ظرف وإدخاله في الصندوق. إذا كانت الهدية مادية غير المال، يرجى وضعها بجانب الصندوق.',
       },
       finalMessage: {
         title: 'شكرًا لكم',
@@ -500,7 +496,6 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     },
     envelope: {
       fallbackGuest: 'Cher invité',
-      dearLabel: 'Cher',
       invitedText: 'Vous êtes invité',
       fonts: {
         title: "font-['Pinyon_Script']",
@@ -520,13 +515,13 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       city: 'Copenhague',
       flipButton: 'Retourner ✨',
       backButton: 'Retour à l invitation',
-      celebrationTitle: 'La Célébration',
-      weddingPartyLabel: 'La réception commence à partir de',
-      programSoon: 'Le programme arrive bientôt',
+      storyTitle: 'Notre histoire',
+      story: 'Il était une fois...',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
         address: "font-['Noto_Sans']",
+        story: "font-['Allura']",
       },
     },
     countdown: {
@@ -951,7 +946,7 @@ function DressCodeSection({ strings, fonts, direction }: { strings: LanguageStri
 
               <div className={`${fonts.secondary} text-xl text-[#f59dbd] mb-4`}>{strings.suitColors}</div>
 
-              <div className="w-full h-24 rounded-lg shadow-lg mb-6 border-2 border-[#f59dbd]/30" style={{
+              <div className="w-full h-24 rounded-lg shadow-lg mb-6 border-[#f59dbd]/30" style={{
                 background: 'linear-gradient(to right, #ababab 3%, #7F7F7F 27%, #002060 69%, #000000 98%)'
               }} />
             </div>
@@ -963,8 +958,8 @@ function DressCodeSection({ strings, fonts, direction }: { strings: LanguageStri
 
               <div className={`${fonts.secondary} text-xl text-[#f59dbd] mb-4`}>{strings.dressColors}</div>
 
-              <div className="w-full h-24 rounded-lg shadow-lg mb-6 border-2 border-[#f59dbd]/30" style={{
-                background: 'linear-gradient(to right, #001B50 0%, #002060 9%, #F7ADC8 50%, #F9C2B5 77%, #FEE5E1 95%, #FEE5E1 100%)'
+              <div className="w-full h-24 rounded-lg shadow-lg mb-6  border-[#f59dbd]/30" style={{
+                background: 'linear-gradient(to right, #001B50 0%, #002060 20%, #F7ADC8 70%, #F9C2B5 100%)'
               }} />
             </div>
           </div>
