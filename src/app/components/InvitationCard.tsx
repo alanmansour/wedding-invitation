@@ -87,11 +87,11 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
         >
           <div className="relative h-full flex flex-col items-center justify-center p-12 text-white">
             {guestName && (
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center">
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center z-20 w-full px-4">
                 <div className={`${strings.fonts.secondary} text-xl sm:text-2xl md:text-3xl text-[#f59dbd] mb-1`}>
                   {strings.dearLabel}
                 </div>
-                <div className={`${strings.fonts.secondary} text-2xl sm:text-3xl md:text-4xl text-white drop-shadow-lg`}>
+                <div className={`${strings.fonts.secondary} text-2xl sm:text-3xl md:text-4xl text-white drop-shadow-lg whitespace-nowrap leading-tight`}>
                   {guestName}
                 </div>
               </div>
@@ -161,7 +161,7 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
           }}
         >
           <div className="relative h-full flex flex-col items-center justify-center p-12 text-white">
-            <div className="text-center space-y-6 max-w-lg bg-black/40 backdrop-blur-md rounded-2xl p-8 border-2 border-[#f59dbd]/30">
+            <div className="text-center space-y-6 max-w-lg bg-black/10 rounded-2xl p-8 border-2 border-[#f59dbd]/30">
               <div className={`${strings.fonts.title} text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#f59dbd] mb-6`}>
                 {strings.storyTitle}
               </div>

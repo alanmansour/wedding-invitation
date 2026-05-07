@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, type MouseEvent } from 'react';
 interface EnvelopeOpeningStrings {
   fallbackGuest: string;
   invitedText: string;
+  tapEnvelopeHint: string;
   fonts: {
     title: string;
     secondary: string;
@@ -133,8 +134,10 @@ function HeartCanvas({ animate, heartsRef, initialCount = 28 }: HeartCanvasProps
 
 export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpeningProps) {
   const [isOpening, setIsOpening] = useState(false);
+  const [showTapHint, setShowTapHint] = useState(false);
   const heartsRef = useRef<HeartParticle[]>([]);
   const completeTimer = useRef<number | null>(null);
+  const hintTimer = useRef<number | null>(null);
   const invitedBackground = new URL('../../imports/invited.png', import.meta.url).href;
 
   useEffect(() => {
@@ -142,8 +145,31 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
       if (completeTimer.current) {
         window.clearTimeout(completeTimer.current);
       }
+      if (hintTimer.current) {
+        window.clearTimeout(hintTimer.current);
+      }
     };
   }, []);
+
+  useEffect(() => {
+    if (isOpening) {
+      setShowTapHint(false);
+      if (hintTimer.current) {
+        window.clearTimeout(hintTimer.current);
+      }
+      return;
+    }
+
+    hintTimer.current = window.setTimeout(() => {
+      setShowTapHint(true);
+    }, 5000);
+
+    return () => {
+      if (hintTimer.current) {
+        window.clearTimeout(hintTimer.current);
+      }
+    };
+  }, [isOpening]);
 
   const addHeartsAt = (x: number, y: number) => {
     const colors = [
@@ -193,6 +219,13 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(245,157,189,0.18),transparent_20%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.08),transparent_28%)] pointer-events-none" />
 
       <div className="relative w-96 h-72">
+        {showTapHint && (
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 lg:gap-4 pointer-events-none z-24">
+            <div className={`${strings.fonts.secondary} text-white text-base sm:text-xl lg:text-3xl tracking-wide drop-shadow-lg text-center whitespace-nowrap`}>{strings.tapEnvelopeHint}</div>
+            <div className="text-4xl sm:text-5xl lg:text-6xl animate-bounce" aria-hidden="true">👇</div>
+          </div>
+        )}
+
         {/* Envelope body */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] rounded-lg shadow-2xl border-2 border-[#e91e63]/30" />
 
@@ -222,7 +255,7 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
             backgroundBlendMode: 'soft-light',
           }}
         >
-          <div className={`${strings.fonts.secondary} text-4xl text-[#1a1a2e] mb-2`}>{guestName || strings.fallbackGuest}</div>
+          <div className={`${strings.fonts.secondary} text-4xl text-[#1a1a2e] mb-2 text-center max-w-[85%] mx-auto leading-tight break-words`}>{guestName || strings.fallbackGuest}</div>
           <div className={`${strings.fonts.secondary} text-2xl text-[#e91e63]`}>{strings.invitedText}</div>
           <div className="mt-4 text-2xl">💕</div>
         </div>

@@ -61,6 +61,7 @@ interface LanguageStrings {
   envelope: {
     fallbackGuest: string;
     invitedText: string;
+    tapEnvelopeHint: string;
     fonts: {
       title: string;
       secondary: string;
@@ -173,6 +174,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     envelope: {
       fallbackGuest: 'Dear Guest',
       invitedText: "You're Invited",
+      tapEnvelopeHint: 'Tap the envelope',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
@@ -281,6 +283,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     envelope: {
       fallbackGuest: 'Kære gæst',
       invitedText: 'Du er inviteret',
+      tapEnvelopeHint: 'Tryk på kuverten',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
@@ -387,8 +390,9 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       address: "font-['Noto_Sans']",
     },
     envelope: {
-      fallbackGuest: 'ضيفنا العزيز',
-      invitedText: 'دعوة خاصة لكم',
+      fallbackGuest: 'ضيفنا الكريم',
+      invitedText: 'دعوة خاصة',
+      tapEnvelopeHint: 'اضغط على الظرف',
       fonts: {
         title: "font-['Aref_Ruqaa']",
         secondary: "font-['Aref_Ruqaa']",
@@ -396,9 +400,9 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     },
     invitationCard: {
       dearLabel: 'إلى',
-      dearGuest: 'الضيف العزيز',
+      dearGuest: 'ضيفنا الكريم',
       coupleNames: 'Alan & Milav',
-      requestHonor: 'يشرفنا حضوركم ومشاركتم فرحة ',
+      requestHonor: 'يشرفنا حضوركم ومشاركتكم فرحة ',
       celebrationLine: 'حفل زفافنا',
       dateText: 'الجمعة 17 يوليو 2026',
       timeText: '17:00',
@@ -408,7 +412,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       flipButton: 'اقلب البطاقة ✨',
       backButton: 'العودة إلى الدعوة',
       storyTitle: 'قصتنا',
-      story: 'بدأت حكايتنا في عام ٢٠١٥، منذ أحد عشر عامًا، وهي مدة يمكن للمرء أن يقول إن تاريخًا طويلًا قد مضى فيها، في بلدةٍ هادئة احتضنت أولى خطواتنا. كنّا زميلين في دراسة لغة جديدة، غريبين عن المكان، جديدين على الثقافة، نحاول أن نفهم العالم من حولنا. لم نكن نعرف حينها أن تلك اللحظات البسيطة — نظرة، كلمة، ضحكة — كانت تبني شيئًا أكبر مما كنا نتخيّل.\n\nومع مرور الأيام، لم تعد الغربة مجرد شعورٍ في داخلنا، بل امتحانًا صغيرًا لقوّتنا معًا. واجهنا نجاحاتٍ تارة، وخساراتٍ تارة أخرى. مررنا بلحظاتٍ سعيدة ومليئة بالدفء، ولحظاتٍ أخرى صعبة لا تخلو من الكآبة، لكننا — في كل مرة — كنا نجد الطريق من جديد لأن أحدنا كان يمسك بيد الآخر. شيئًا فشيئًا، تحوّلت صداقتنا إلى علاقةٍ أعمق، علاقةٍ صقلتها التجارب، وثبّتها الصبر، حتى أصبحت رفقة دربٍ لا يمكن كسرها.\n\nانتقلنا من مرحلة إلى أخرى، ومن مدينة إلى أخرى، نكبر وننضج ونحلم مفعمين بالطموح. إلى أن وصلنا إلى مرحلة الجامعة، حيث بدأت ملامح مستقبلنا تتشكّل بين المحاضرات والمشاريع والليالي الطويلة. لم يكن الطريق سهلًا، لكننا مضينا فيه بثبات، نساند بعضنا حين يثقل الحمل، ونحتفل معًا حين تتحقق خطوة جديدة. ومع الوقت، أصبحنا مهندسين — ليس فقط في العمل، بل في حياتنا المشتركة أيضًا — نبنيها حجرةً حجرة، ونحرسها معًا.\n\nواليوم، نقف على عتبة فصلٍ جديد، فصلٍ يبدأ بشابٍ وشابة اختارا أن يكملا الطريق يدًا بيد، وأن يشاركا قصتهما مع من يحبّونهما…\n\nفصلٌ نؤمن أن أجمل ما فيه لم يُكتب بعد 🤵🏻👰🏻‍♀️',
+      story: 'بدأت حكايتنا قبل أحد عشر عامًا، أي في عام ٢٠١٥. حدث ذلك في الغربة في بلدة دنماركية هادئة، التي شهدت أولى خطواتنا نحو بناء علاقة حب صادقة. كنّا زميلين في دراسة لغة جديدة، غريبين عن المكان، جديدين على الثقافة، نحاول أن نفهم العالم من حولنا. لم نكن نعرف حينها أن تلك اللحظات البسيطة — نظرة، كلمة، ضحكة — كانت تبني شيئًا أكبر مما كنا نتخيّل.\n\nومع مرور الأيام، لم تعد الغربة مجرد شعورٍ في داخلنا، بل امتحانًا صغيرًا لقوّتنا معًا. واجهنا نجاحاتٍ تارة، وخساراتٍ تارة أخرى. مررنا بلحظاتٍ سعيدة ومليئة بالدفء، ولحظاتٍ أخرى صعبة لا تخلو من الكآبة، لكننا — في كل مرة — كنا نجد الطريق من جديد لأن أحدنا كان يمسك بيد الآخر. شيئًا فشيئًا، تحوّلت صداقتنا إلى علاقةٍ أعمق، علاقةٍ صقلتها التجارب، وثبّتها الصبر، حتى أصبحت رفقة دربٍ لا يمكن كسرها.\n\nانتقلنا من مرحلة إلى أخرى، ومن مدينة إلى أخرى، نكبر وننضج ونحلم مفعمين بالطموح. إلى أن وصلنا إلى مرحلة الجامعة، حيث بدأت ملامح مستقبلنا تتشكّل بين المحاضرات والمشاريع والليالي الطويلة. لم يكن الطريق سهلًا، لكننا مضينا فيه بثبات، نساند بعضنا حين يثقل الحمل، ونحتفل معًا حين تتحقق خطوة جديدة. ومع الوقت، أصبحنا مهندسين — ليس فقط في العمل، بل في حياتنا المشتركة أيضًا — نبنيها حجرةً حجرة، ونحرسها معًا.\n\nواليوم، نقف على عتبة فصلٍ جديد، فصلٍ يبدأ بشابٍ وشابة اختارا أن يكملا الطريق يدًا بيد، وأن يشاركا قصتهما مع من يحبّونهما…\n\nفصلٌ نؤمن أن أجمل ما فيه لم يُكتب بعد 🤵🏻👰🏻‍♀️',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Aref_Ruqaa']",
@@ -468,7 +472,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       gifts: {
         title: 'الهدايا',
         intro: 'حضوركم في زفافنا هو أعظم هدية!',
-        details: 'إذا أردتم تكريمنا بهدية، فلدينا صندوق MobilePay لشهر العسل.',
+        details: 'ولكن، إذا أردتم تكريمنا بهدية، فلدينا صندوق MobilePay لشهر العسل.',
         boxTitle: 'MobilePay Honeymoon Box',
         boxButton: 'افتح الصندوق',
         instructions: 'أو،سيكون لدينا خلال الاحتفال صندوق لوضع الهدايا. إذا كانت الهدية مبلغ من المال، يرجى وضعه في ظرف وإدخاله في الصندوق. إذا كانت الهدية مادية غير المال، يرجى وضعها بجانب الصندوق.',
@@ -497,6 +501,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
     envelope: {
       fallbackGuest: 'Cher invité',
       invitedText: 'Vous êtes invité',
+      tapEnvelopeHint: "Touchez l'enveloppe",
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
@@ -516,7 +521,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
       flipButton: 'Retourner ✨',
       backButton: 'Retour à l invitation',
       storyTitle: 'Notre histoire',
-      story: 'Il était une fois...',
+      story: 'Notre histoire a commencé en 2015 — il y a onze ans — une période que l’on pourrait aisément qualifier de longue et sinueuse. Tout a débuté dans une petite ville tranquille qui a accueilli nos tout premiers pas ensemble. Nous étions camarades de classe, étudiant une nouvelle langue, étrangers à cet endroit, nouveaux venus dans cette culture, essayant de comprendre le monde qui nous entourait. Nous ne savions pas alors que ces instants simples — un regard, un mot, un rire partagé — construisaient silencieusement quelque chose de bien plus grand que ce que nous pouvions imaginer.\n\nAu fil des jours, le sentiment d’être étrangers n’était plus seulement une émotion en nous, mais une petite épreuve de notre force commune. Parfois, nous avons connu des réussites, et d’autres fois des pertes. Nous avons vécu des moments remplis de joie et de chaleur, et d’autres plus difficiles, teintés de lourdeur. Pourtant, chaque fois, nous retrouvions notre chemin, car l’un de nous tenait toujours la main de l’autre. Peu à peu, notre amitié s’est transformée en quelque chose de plus — un lien façonné par l’expérience, renforcé par la patience, jusqu’à devenir une compagnie que rien ne peut briser.\n\nNous sommes passés d’une étape de la vie à une autre, d’une ville à une autre, grandissant, mûrissant, rêvant avec des cœurs pleins d’ambition. Jusqu’à atteindre l’université, où les contours de notre avenir ont commencé à se dessiner — entre les cours, les projets et les longues nuits de travail. Le chemin n’a pas été facile, mais nous l’avons parcouru avec constance, nous soutenant lorsque le poids devenait lourd, et célébrant ensemble chaque nouvelle étape franchie. Finalement, nous sommes devenus ingénieurs — non seulement dans nos carrières, mais aussi dans notre vie commune — la construisant pierre par pierre, et la protégeant ensemble.\n\nEt aujourd’hui, nous nous tenons au seuil d’un nouveau chapitre — celui qui commence avec un jeune homme et une jeune femme ayant choisi de poursuivre le voyage main dans la main, et de partager leur histoire avec ceux qu’ils aiment…\n\nUn chapitre dont nous croyons que les plus belles pages restent encore à écrire 🤵🏻👰🏻‍♀️',
       fonts: {
         title: "font-['Pinyon_Script']",
         secondary: "font-['Allura']",
@@ -959,7 +964,7 @@ function DressCodeSection({ strings, fonts, direction }: { strings: LanguageStri
               <div className={`${fonts.secondary} text-xl text-[#f59dbd] mb-4`}>{strings.dressColors}</div>
 
               <div className="w-full h-24 rounded-lg shadow-lg mb-6  border-[#f59dbd]/30" style={{
-                background: 'linear-gradient(to right, #001B50 0%, #002060 20%, #F7ADC8 70%, #F9C2B5 100%)'
+                background: 'linear-gradient(to right, #002060 10%, #F7ADC8 100%)'
               }} />
             </div>
           </div>
@@ -984,7 +989,7 @@ function GiftsSection({ strings, fonts, direction }: { strings: LanguageStrings[
     >
       {/* Parallax background pattern */}
       <div
-        className="absolute inset-0 opacity-5"
+        className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
           // transform: `translateY(${offset * 0.25}px)`,
           backgroundImage: 'repeating-linear-gradient(45deg, #f59dbd, #f59dbd 10px, transparent 10px, transparent 20px)',
@@ -1004,7 +1009,7 @@ function GiftsSection({ strings, fonts, direction }: { strings: LanguageStrings[
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#f59dbd] to-transparent mx-auto mb-8" />
         </div>
 
-        <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] rounded-2xl p-12 shadow-2xl border-2 border-[#f59dbd]/30 text-center">
+        <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] rounded-2xl p-12 shadow-2xl border-2 border-[#f59dbd]/30 text-center select-text">
           <div className={`${fonts.secondary} text-3xl text-white mb-6 leading-relaxed`}>{strings.intro}</div>
 
           <div className={`${fonts.secondary} text-3xl text-[#f59dbd] mb-8 leading-relaxed`}>{strings.details}</div>
