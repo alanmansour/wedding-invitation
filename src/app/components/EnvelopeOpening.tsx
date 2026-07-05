@@ -12,6 +12,7 @@ interface EnvelopeOpeningStrings {
 
 interface EnvelopeOpeningProps {
   onComplete: () => void;
+  onFirstInteraction?: () => void;
   guestName?: string;
   strings: EnvelopeOpeningStrings;
 }
@@ -132,7 +133,7 @@ function HeartCanvas({ animate, heartsRef, initialCount = 28 }: HeartCanvasProps
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ background: 'transparent' }} />;
 }
 
-export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpeningProps) {
+export function EnvelopeOpening({ onComplete, onFirstInteraction, guestName, strings }: EnvelopeOpeningProps) {
   const [isOpening, setIsOpening] = useState(false);
   const [showTapHint, setShowTapHint] = useState(false);
   const heartsRef = useRef<HeartParticle[]>([]);
@@ -162,7 +163,7 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
 
     hintTimer.current = window.setTimeout(() => {
       setShowTapHint(true);
-    }, 5000);
+    }, 2500);
 
     return () => {
       if (hintTimer.current) {
@@ -205,12 +206,15 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
       addHeartsAt(event.clientX, event.clientY);
       return;
     }
+
+    onFirstInteraction?.();
+
     setIsOpening(true);
     addHeartsAt(event.clientX, event.clientY);
 
     completeTimer.current = window.setTimeout(() => {
       onComplete();
-    }, 4000);
+    }, 5000);
   };
 
   return (
@@ -220,9 +224,9 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
 
       <div className="relative w-96 h-72">
         {showTapHint && (
-          <div className="absolute -top-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 lg:gap-4 pointer-events-none z-24">
-            <div className={`${strings.fonts.secondary} text-white text-base sm:text-xl lg:text-3xl tracking-wide drop-shadow-lg text-center whitespace-nowrap`}>{strings.tapEnvelopeHint}</div>
-            <div className="text-4xl sm:text-5xl lg:text-6xl animate-bounce" aria-hidden="true">👇</div>
+          <div className="absolute -top-24 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 lg:gap-4 pointer-events-none z-24 animate-fade-in">
+            <div className={`${strings.fonts.secondary} text-white text-4xl tracking-wide drop-shadow-lg text-center whitespace-nowrap`}>{strings.tapEnvelopeHint}</div>
+            <div className="text-7xl animate-bounce" aria-hidden="true">👇</div>
           </div>
         )}
 
@@ -243,10 +247,10 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
 
         {/* Letter inside */}
         <div
-          className={`absolute inset-4 rounded shadow-xl flex flex-col items-center justify-center transition-all duration-1000 delay-300 ${
-            isOpening ? 'translate-y-[-100px] opacity-100' : 'translate-y-4 opacity-0'
-          }`}
+          className="absolute inset-4 rounded shadow-xl flex flex-col items-center justify-center transition-all duration-1000 delay-300"
           style={{
+            opacity: isOpening ? 1 : 0,
+            transform: isOpening ? 'translateY(-100px)' : 'translateY(16px)',
             backgroundColor: '#ffffff',
             backgroundImage: `url(${invitedBackground})`,
             backgroundSize: 'cover',
@@ -262,9 +266,11 @@ export function EnvelopeOpening({ onComplete, guestName, strings }: EnvelopeOpen
 
         {/* Rose decoration */}
         <div
-          className={`absolute -bottom-8 right-12 text-6xl transition-all duration-1000 delay-500 ${
-            isOpening ? 'opacity-100 scale-100 rotate-12' : 'opacity-0 scale-0'
-          }`}
+          className="absolute -bottom-8 right-12 text-6xl transition-all duration-1000 delay-500"
+          style={{
+            opacity: isOpening ? 1 : 0,
+            transform: isOpening ? 'scale(1) rotate(12deg)' : 'scale(0)',
+          }}
         >
           🌹
         </div>

@@ -445,7 +445,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         parkingTitle: 'موقف السيارات',
         parkingDescription: 'تتوفر مواقف للسيارات في محيط موقع الحفل للضيوف القادمين بسياراتهم.',
         transportTitle: 'وسائل النقل العام',
-        transportDescription: 'إذا قررتم المجيئ من محطة كوبنهاغن الرئيسية يمكنم الصعود على حافلة 5C بإتجاه Husum أو Herlev Hospital والخروج عند محطة Kobbelvænget.',
+        transportDescription: 'إذا قررتم المجيئ من محطة كوبنهاغن الرئيسية يمكنم الصعود على حافلة 5C بإتجاه Husum Torv أو Herlev Hospital والخروج عند محطة Kobbelvænget.',
         fonts: {
           title: "font-['Aref_Ruqaa']",
           secondary: "font-['Pinyon_Script']",
@@ -650,17 +650,36 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRetryIntervalRef = useRef<number | null>(null);
 
-  const enableAudioOnInteraction = async () => {
-    if (!audioEnabled && audioRef.current) {
-      try {
-        await audioRef.current.play()
-        setIsPlaying(true);
-        setAudioEnabled(true);
-      } catch (error) {
-        // Silently handle audio errors
-      }
+  const clearAudioRetry = () => {
+    if (audioRetryIntervalRef.current) {
+      window.clearInterval(audioRetryIntervalRef.current);
+      audioRetryIntervalRef.current = null;
     }
+  };
+
+  const tryPlayAudio = async () => {
+    if (!audioRef.current || audioEnabled) return;
+
+    try {
+      await audioRef.current.play();
+      setIsPlaying(true);
+      setAudioEnabled(true);
+      clearAudioRetry();
+    } catch (error) {
+      // Keep retrying until playback is allowed and succeeds.
+    }
+  };
+
+  const startAudioRetryLoop = () => {
+    void tryPlayAudio();
+
+    if (audioRetryIntervalRef.current) return;
+
+    audioRetryIntervalRef.current = window.setInterval(() => {
+      void tryPlayAudio();
+    }, 1200);
   };
 
   useEffect(() => {
@@ -678,6 +697,33 @@ export default function App() {
     document.documentElement.dir = direction;
   }, [language, direction]);
 
+  useEffect(() => {
+    const preloadMedia = [
+      { src: new URL('../imports/invited.png', import.meta.url).href, type: 'image' as const },
+      { src: new URL('../imports/photo_1.png', import.meta.url).href, type: 'image' as const },
+      { src: new URL('../imports/photo_2.jpg', import.meta.url).href, type: 'image' as const },
+      { src: new URL('../imports/perfect.mp3', import.meta.url).href, type: 'audio' as const },
+    ];
+
+    preloadMedia.forEach((media) => {
+      if (media.type === 'image') {
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = media.src;
+      } else {
+        const audio = new Audio();
+        audio.preload = 'auto';
+        audio.src = media.src;
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      clearAudioRetry();
+    };
+  }, []);
+
   const strings = translations[language];
   const invitationBackgroundImage = '';
 
@@ -692,6 +738,8 @@ export default function App() {
           if (playPromise !== undefined) {
             await playPromise;
             setIsPlaying(true);
+            setAudioEnabled(true);
+            clearAudioRetry();
           }
         } catch (error) {
           // Silently handle audio errors
@@ -700,49 +748,28 @@ export default function App() {
     }
   };
 
-  const startAudio = async () => {
-    if (audioRef.current && !isPlaying) {
-      try {
-        // Ensure audio is loaded
-        if (audioRef.current.readyState === 0) {
-          await new Promise((resolve) => {
-            const onCanPlay = () => {
-              audioRef.current?.removeEventListener('canplay', onCanPlay);
-              resolve(void 0);
-            };
-            audioRef.current?.addEventListener('canplay', onCanPlay);
-            audioRef.current?.load();
-          });
-        }
-
-        const playPromise = audioRef.current.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-          setIsPlaying(true);
-          setAudioEnabled(true);
-        }
-      } catch (error) {
-        // Silently handle audio errors
-      }
-    }
-  };
-
   const handleEnvelopeComplete = () => {
     setShowEnvelope(false);
-    // Start audio after envelope animation completes
-    enableAudioOnInteraction();
+    // Retry playback until it succeeds for browsers that delay autoplay unlock.
+    startAudioRetryLoop();
+  };
+
+  const handleEnvelopeFirstInteraction = () => {
+    // iOS/Safari autoplay policies are more permissive inside direct user gestures.
+    startAudioRetryLoop();
   };
 
   return (
     <div dir={direction} className="min-h-screen bg-black overflow-x-hidden">
       {/* Background music */}
-      <audio ref={audioRef} loop>
+      <audio ref={audioRef} loop preload="auto" playsInline>
         <source src={new URL('../imports/perfect.mp3', import.meta.url).href} type="audio/mp3" />
       </audio>
 
       {showEnvelope && (
         <EnvelopeOpening
           onComplete={handleEnvelopeComplete}
+          onFirstInteraction={handleEnvelopeFirstInteraction}
           guestName={guestName}
           strings={strings.envelope}
         />

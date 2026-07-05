@@ -86,18 +86,17 @@ export function InvitationCard({ backgroundImage, guestName, strings, isPlaying,
           }}
         >
           <div className="relative h-full flex flex-col items-center justify-center p-12 text-white">
-            {guestName && (
-              <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center z-20 w-full px-4">
-                <div className={`${strings.fonts.secondary} text-xl sm:text-2xl md:text-3xl text-[#f59dbd] mb-1`}>
-                  {strings.dearLabel}
+            <div className="text-center space-y-8 mt-12">
+              {guestName && (
+                <div className="space-y-1">
+                  <div className={`${strings.fonts.secondary} text-xl sm:text-2xl md:text-3xl text-[#f59dbd]`}>
+                    {strings.dearLabel}
+                  </div>
+                  <div className={`${strings.fonts.secondary} text-2xl sm:text-3xl md:text-4xl text-white drop-shadow-lg whitespace-nowrap leading-tight`}>
+                    {guestName}
+                  </div>
                 </div>
-                <div className={`${strings.fonts.secondary} text-2xl sm:text-3xl md:text-4xl text-white drop-shadow-lg whitespace-nowrap leading-tight`}>
-                  {guestName}
-                </div>
-              </div>
-            )}
-
-            <div className={`text-center space-y-8 ${guestName ? 'mt-14' : 'mt-12'}`}>
+              )}
 
               <div className="w-32 h-px bg-gradient-to-r from-transparent via-[#f59dbd] to-transparent mx-auto" />
 
