@@ -61,6 +61,20 @@
   }
 }
 
+@keyframes scalePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.animate-scale-pulse {
+  animation: scalePulse 1.5s ease-in-out infinite;
+  transform-origin: left center;
+}
+
 .heart {
   position: absolute;
   top: 110%;

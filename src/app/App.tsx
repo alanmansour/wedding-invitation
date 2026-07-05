@@ -127,6 +127,7 @@ interface LanguageStrings {
       weddingPartyFrom: string;
       weddingTime: string;
       programSoon: string;
+      program?: Array<{ time: string; activity: string; subtitle?: string; style?: 'clean' | 'party' | 'special' | 'default' }>;
     };
     dressCode: {
       title: string;
@@ -236,10 +237,24 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         },
       },
       celebration: {
-        title: 'The Celebration',
+        title: 'The Celebration Program',
         weddingPartyFrom: 'The wedding party starts from',
         weddingTime: '17:00',
         programSoon: 'The program will come soon',
+        program: [
+          { time: '17:00', activity: 'Welcome Reception 🥂', subtitle: 'Drinks and Dessert', style: 'clean' },
+          { time: '18:00', activity: 'Grand Entrances 🤵🏻👰🏻‍♀️', style: 'special' },
+          { time: '18:20', activity: 'The First Dance 💃🏻🕺🏻' },
+          { time: '18:40', activity: 'Kurdish Chain Dance 💚❤️💛' },
+          { time: '20:00', activity: 'Dinner Service 🍽️', subtitle: 'Buffet' },
+          { time: '20:45', activity: 'Special Show ✨', style: 'special' },
+          { time: '21:20', activity: 'Kurdish Chain Dance 💚❤️💛' },
+          { time: '22:00', activity: 'Cake Show 🎂' },
+          { time: '22:15', activity: 'The Dance of the Couples 💍' },
+          { time: '22:30', activity: 'Dessert & Portraits 🍰📸' },
+          { time: '23:15', activity: 'The Evening Highlight 🪩🎉', subtitle: 'Disco & Techno Party', style: 'party' },
+          { time: '01:00', activity: 'Closing of Celebration 🌙😴', style: 'clean' },
+        ],
       },
       dressCode: {
         title: 'Dress Code',
@@ -345,10 +360,24 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         },
       },
       celebration: {
-        title: 'Fejringen',
+        title: 'Fejringsprogram',
         weddingPartyFrom: 'Bryllupsfesten starter fra',
         weddingTime: '17:00',
         programSoon: 'Programmet følger snart',
+        program: [
+          { time: '17:00', activity: 'Velkomstreception 🥂', subtitle: 'Drinks og Dessert', style: 'clean' },
+          { time: '18:00', activity: 'Grand Entrances 🤵🏻👰🏻‍♀️', style: 'special' },
+          { time: '18:20', activity: 'Første Dans 💃🏻🕺🏻' },
+          { time: '18:40', activity: 'Kurdisk Kædedans 💚❤️💛' },
+          { time: '20:00', activity: 'Middag 🍽️', subtitle: 'Buffet' },
+          { time: '20:45', activity: 'Special Show ✨', style: 'special' },
+          { time: '21:20', activity: 'Kurdisk Kædedans 💚❤️💛' },
+          { time: '22:00', activity: 'Kage Show 🎂' },
+          { time: '22:15', activity: 'Parrets Dans 💍' },
+          { time: '22:30', activity: 'Dessert & Portrætter 🍰📸' },
+          { time: '23:15', activity: 'Aftenens Højdepunkt 🪩🎉', subtitle: 'Disco & Techno Party', style: 'party' },
+          { time: '01:00', activity: 'Lukking af Fejringen 🌙😴', style: 'clean' },
+        ],
       },
       dressCode: {
         title: 'Dresscode',
@@ -443,7 +472,7 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         foodTitle: 'الطعام والمشروبات',
         foodDescription: 'سيكون هناك بوفيه مفتوح ومشروبات كحولية وغير كحولية.',
         parkingTitle: 'موقف السيارات',
-        parkingDescription: 'تتوفر مواقف للسيارات في محيط موقع الحفل للضيوف القادمين بسياراتهم.',
+        parkingDescription: 'تتوفر مواقف للسيارات في محيط موقع الحفل للضيوف القادمين بسياراتهم. يرجى الانتباه إلى أن بعض المواقف قد تكون محدودة، لذا يُنصح بالوصول مبكرًا أو مشاركة السيارة مع الآخرين.',
         transportTitle: 'وسائل النقل العام',
         transportDescription: 'إذا قررتم المجيئ من محطة كوبنهاغن الرئيسية يمكنم الصعود على حافلة 5C بإتجاه Husum Torv أو Herlev Hospital والخروج عند محطة Kobbelvænget.',
         fonts: {
@@ -454,10 +483,24 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         },
       },
       celebration: {
-        title: 'الاحتفال',
+        title: 'برنامج الاحتفال',
         weddingPartyFrom: 'يبدأ حفل الزفاف من الساعة',
         weddingTime: '17:00',
         programSoon: 'سيأتي البرنامج قريبًا',
+        program: [
+          { time: '17:00', activity: 'استقبال المدعويين 🥂', subtitle: 'مشروبات وحلويات', style: 'clean' },
+          { time: '18:00', activity: 'دخول العروسين 🤵🏻👰🏻‍♀️', style: 'special' },
+          { time: '18:20', activity: 'الرقصة الأولى 💃🏻🕺' },
+          { time: '18:40', activity: 'رقصة گوڤاند ودیلان 💚❤️💛' },
+          { time: '20:00', activity: 'العشاء 🍽️', subtitle: 'بوفيه' },
+          { time: '20:45', activity: 'عرض خاص ✨', style: 'special' },
+          { time: '21:20', activity: 'رقصة گوڤاند ودیلان 💚❤️💛' },
+          { time: '22:00', activity: 'فقرة الكاتو 🎂' },
+          { time: '22:15', activity: 'الرقصة الثانية مع العشّاق 💍' },
+          { time: '22:30', activity: 'تحلية الكاتو وأخذ الصور مع العروسين 🍰📸' },
+          { time: '23:15', activity: 'ديسكو وتكنو 🪩🎉', style: 'party' },
+          { time: '01:00', activity: 'نهاية الحفلة 🌙😴', style: 'clean' },
+        ],
       },
       dressCode: {
         title: 'قواعد اللباس',
@@ -563,10 +606,24 @@ const translations: Record<SupportedLanguage, LanguageStrings> = {
         },
       },
       celebration: {
-        title: 'La Célébration',
+        title: 'La Célébration Programmée',
         weddingPartyFrom: 'La réception commence à partir de',
         weddingTime: '17:00',
         programSoon: 'Le programme arrive bientôt',
+        program: [
+          { time: '17:00', activity: 'Réception d\'accueil 🥂', subtitle: 'Boissons et Desserts', style: 'clean' },
+          { time: '18:00', activity: 'Grande Entrée 🤵🏻👰🏻‍♀️', style: 'special' },
+          { time: '18:20', activity: 'La Première Danse 💃🏻🕺🏻' },
+          { time: '18:40', activity: 'Danse Chaîne Kurde 💚❤️💛' },
+          { time: '20:00', activity: 'Service du Dîner 🍽️', subtitle: 'Buffet' },
+          { time: '20:45', activity: 'Spectacle Spécial ✨', style: 'special' },
+          { time: '21:20', activity: 'Danse Chaîne Kurde 💚❤️💛' },
+          { time: '22:00', activity: 'Présentation du Gâteau 🎂' },
+          { time: '22:15', activity: 'La Danse du Couple 💍' },
+          { time: '22:30', activity: 'Desserts & Portraits 🍰📸' },
+          { time: '23:15', activity: 'Point Culminant du Soir 🪩🎉', subtitle: 'Disco & Techno Party', style: 'party' },
+          { time: '01:00', activity: 'Clôture de la Célébration 🌙😴', style: 'clean' },
+        ],
       },
       dressCode: {
         title: 'Code vestimentaire',
@@ -900,6 +957,32 @@ function CelebrationSection({ strings, fonts, direction }: { strings: LanguageSt
   const { ref, isVisible } = useScrollAnimation();
   const offset = useParallax();
 
+  const getActivityStyle = (style?: string) => {
+    switch (style) {
+      case 'clean':
+        return 'font-bold text-3xl';
+      case 'party':
+        return 'font-bold text-4xl animate-pulse';
+      case 'special':
+        return 'font-bold text-4xl animate-scale-pulse inline-block';
+      default:
+        return 'font-bold text-3xl';
+    }
+  };
+
+  const getActivityColor = (style?: string) => {
+    switch (style) {
+      case 'clean':
+        return 'white';
+      case 'party':
+        return '#A855F7';
+      case 'special':
+        return '#84153e';
+      default:
+        return '#f59dbd';
+    }
+  };
+
   return (
     <section
       ref={ref}
@@ -915,7 +998,7 @@ function CelebrationSection({ strings, fonts, direction }: { strings: LanguageSt
       />
 
       <div
-        className={`max-w-3xl w-full transition-all duration-1000 delay-150 ${
+        className={`max-w-4xl w-full transition-all duration-1000 delay-150 ${
           isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
         }`}
       >
@@ -926,10 +1009,38 @@ function CelebrationSection({ strings, fonts, direction }: { strings: LanguageSt
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#f59dbd] to-transparent mx-auto" />
         </div>
 
-        <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] rounded-3xl p-12 shadow-2xl border-2 border-[#f59dbd]/30 text-center text-white">
-          <div className={`${fonts.secondary} text-4xl text-[#f59dbd] mb-6`}>{strings.weddingPartyFrom}</div>
-          <div className={`${fonts.secondary} text-7xl text-white mb-8`}>{strings.weddingTime}</div>
-          <div className={`${fonts.secondary} text-3xl text-[#f59dbd] leading-relaxed`}>{strings.programSoon}</div>
+        <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0f0f1e] rounded-3xl p-8 shadow-2xl border-2 border-[#f59dbd]/30 text-white">
+          {/* <div className={`${fonts.secondary} text-4xl text-[#f59dbd] mb-8 text-center`}>{strings.weddingPartyFrom}</div> */}
+
+          {strings.program && strings.program.length > 0 ? (
+            <div className="space-y-4 max-h-[36rem] overflow-y-auto pr-2">
+              {strings.program.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-4 pb-4 border-b border-[#f59dbd]/20 last:border-b-0">
+                  <div className={`${fonts.secondary} text-2xl font-bold text-white min-w-20 text-right`}>
+                    {item.time}
+                  </div>
+                  <div className="flex-1">
+                    <div 
+                      className={`${fonts.secondary} ${getActivityStyle(item.style)}`} 
+                      style={{ 
+                        color: getActivityColor(item.style),
+                        // ...(item.style === 'special' && { WebkitTextStroke: '0.3px #f59dbd', WebkitTextFillColor: 'white' })
+                      }}
+                    >
+                      {item.activity}
+                    </div>
+                    {item.subtitle && (
+                      <div className={`${fonts.secondary} text-2xl text-white mt-1`}>
+                        {item.subtitle}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={`${fonts.secondary} text-3xl text-[#f59dbd] leading-relaxed text-center`}>{strings.programSoon}</div>
+          )}
         </div>
       </div>
     </section>
